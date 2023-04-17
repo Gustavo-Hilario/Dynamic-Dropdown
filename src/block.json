@@ -10,6 +10,12 @@
 	"supports": {
 		"html": false
 	},
+	"attributes": {
+		"initialImage": {
+			"type": "string",
+			"default": "/wp-content/uploads/2014/01/spectacles.gif"
+		}
+	},
 	"textdomain": "dynamic-dropdown",
 	"render": "file:./render.php",
 	"viewScript": "file:./view.js",

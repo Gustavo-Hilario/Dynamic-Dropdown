@@ -30,10 +30,28 @@ import "./editor.scss";
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes }) {
+	const chosingImage = (e) => {
+		setAttributes({ initialImage: e.target.value });
+	};
+
 	return (
-		<p {...useBlockProps()}>
-			{__("Dynamic Dropdown – hello from the editor!", "dynamic-dropdown")}
-		</p>
+		<div {...useBlockProps()}>
+			<select class="dynamic-dropdown" onChange={chosingImage}>
+				<option
+					value="/wp-content/uploads/2014/01/spectacles.gif"
+					label="option1"
+				>
+					Option 1
+				</option>
+				<option
+					value="/wp-content/uploads/2014/01/dsc20050315_145007_132.jpg"
+					label="option2"
+				>
+					Option 2
+				</option>
+			</select>
+			<img id="renderedImage" src={attributes.initialImage} />
+		</div>
 	);
 }
