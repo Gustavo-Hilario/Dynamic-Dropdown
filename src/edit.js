@@ -11,7 +11,9 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
+
+import { PanelBody } from "@wordpress/components";
 
 import { useState } from "@wordpress/element";
 /**
@@ -36,22 +38,29 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	return (
-		<div {...useBlockProps()}>
-			<select class="dynamic-dropdown" onChange={chosingImage}>
-				<option
-					value="/wp-content/uploads/2014/01/spectacles.gif"
-					label="option1"
-				>
-					Option 1
-				</option>
-				<option
-					value="/wp-content/uploads/2014/01/dsc20050315_145007_132.jpg"
-					label="option2"
-				>
-					Option 2
-				</option>
-			</select>
-			<img id="renderedImage" src={attributes.initialImage} />
-		</div>
+		<>
+			<div {...useBlockProps()}>
+				<select class="dynamic-dropdown" onChange={chosingImage}>
+					<option
+						value="/wp-content/uploads/2014/01/spectacles.gif"
+						label="option1"
+					>
+						Option 1
+					</option>
+					<option
+						value="/wp-content/uploads/2014/01/dsc20050315_145007_132.jpg"
+						label="option2"
+					>
+						Option 2
+					</option>
+				</select>
+				<img id="renderedImage" src={attributes.initialImage} />
+			</div>
+			<InspectorControls>
+				<PanelBody title={__("Show stuff")}>
+					<h3>{__("Some Menu")}</h3>
+				</PanelBody>
+			</InspectorControls>
+		</>
 	);
 }
